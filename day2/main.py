@@ -76,7 +76,7 @@ def part1(data: 'list[str]'):
 import os
 
 data = []
-with open(os.path.join(os.path.dirname(__file__), './input.txt'), 'r') as file:
+with open(os.path.join(os.path.dirname(__file__), './input2.txt'), 'r') as file:
   for line in file.readlines():
     data.append(line.strip())
 
@@ -180,4 +180,6 @@ def part2(data: list[str]):
 
   print(tot)
 
-part2(data)
+if __name__ == '__main__':
+  # part1(data)
+  part2(data)
