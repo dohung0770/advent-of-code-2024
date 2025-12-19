@@ -51,6 +51,7 @@ if __name__ == '__main__':
     print('---- Part 1 ----')
     print('result = ', part1())
 
+
     print('---- Part 2 ----')
     print('result = ', part2())
 ```
