@@ -593,7 +593,7 @@ def part2(grid: list[str], moves: str) -> int:
         while j - dy != y_robot:
             g[nx][j] = g[nx][j - dy]
             g[nx][j - dy] = g[nx][j - 2 * dy]
-            # g[nx][j - 2 * dy] = '.' # reset cell
+            g[nx][j - 2 * dy] = '.' # reset cell
             j -= 2 * dy
             
         return True
@@ -608,7 +608,7 @@ def part2(grid: list[str], moves: str) -> int:
         else:
             if not push_left_right(dx, dy):
                 continue
-            
+
         print(f'Move {ins}:')
         g[x_robot][y_robot] = '.'
         x_robot += dx
@@ -617,13 +617,17 @@ def part2(grid: list[str], moves: str) -> int:
         for i, line in enumerate(g):
             print(''.join('@' if i == x_robot and j == y_robot else line[j] for j in range(n)))
     
+    return [''.join('@' if i == x_robot and j == y_robot else line[j] for j in range(n)) for i, line in enumerate(g)]
     
     # accumulate total GPS distances
     tot = 0
     for i in range(m):
-        for j in range(n - 1):
+        j = 0
+        while j < n - 1:
             if g[i][j] == '[' and g[i][j + 1] == ']':
                 tot += 100 * i + j
+                j += 2
+            else:
                 j += 1
             
     return tot
